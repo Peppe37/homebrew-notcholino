@@ -10,7 +10,14 @@ sha=$(sed -n 's/^  sha256 "\(.*\)"/\1/p' "$cask")
 url="https://github.com/Peppe37/Notcholino/releases/download/v${version}/Notcholino-${version}.dmg"
 
 echo "== style"
-brew style --cask "$cask"
+# brew only styles casks that sit in a tap, so put a copy in a throwaway one
+scratch="scratch/check-$$"
+brew tap-new --no-git "$scratch" >/dev/null 2>&1
+scratch_dir=$(brew --repository "$scratch")
+mkdir -p "$scratch_dir/Casks"
+cp "$cask" "$scratch_dir/Casks/"
+trap 'brew untap --force "$scratch" >/dev/null 2>&1 || true' EXIT
+brew style --cask "$scratch_dir/Casks/notcholino.rb"
 
 echo "== download $url"
 dmg=$(mktemp -d)/Notcholino.dmg
@@ -22,7 +29,7 @@ echo "checksum ok"
 echo "== the app inside"
 mount=$(mktemp -d)
 hdiutil attach -nobrowse -readonly -mountpoint "$mount" "$dmg" >/dev/null
-trap 'hdiutil detach "$mount" >/dev/null 2>&1 || true' EXIT
+trap 'hdiutil detach "$mount" >/dev/null 2>&1 || true; brew untap --force "$scratch" >/dev/null 2>&1 || true' EXIT
 plist="$mount/Notcholino.app/Contents/Info.plist"
 [ -f "$plist" ] || { echo "no Notcholino.app in the DMG"; exit 1; }
 built=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$plist")
