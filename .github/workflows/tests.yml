@@ -1,0 +1,18 @@
+name: Tests
+
+# Checks the cask on every change: style, checksum of the real DMG and the version of the app inside.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  cask:
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/check-cask.sh
