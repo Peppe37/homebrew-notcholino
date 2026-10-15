@@ -1,6 +1,6 @@
 cask "notcholino" do
-  version "0.13.5-alpha"
-  sha256 "26f77a350f11775a50da7aa3b75006be3a0e475f3ff782a10e1f69f5d9d9e098"
+  version "0.13.6-alpha"
+  sha256 "07486f8a8d40883663c9fff429a1616385669633b028bb817c66475b934ffcbd"
 
   url "https://github.com/Peppe37/Notcholino/releases/download/v#{version}/Notcholino-#{version}.dmg"
   name "Notcholino"
