@@ -15,7 +15,7 @@ To remove it: `brew uninstall --cask notcholino` (add `--zap` to delete its sett
 ## About this tap
 
 - Notcholino is an alpha and is **not notarized by Apple** yet. Homebrew's official cask repository only takes notarized apps, so for now it lives here. The cask removes the quarantine flag that Homebrew puts on the download, so the app opens normally.
-- The cask follows the releases of the app on its own: a workflow checks for a new one every few hours, updates the version and checksum, verifies them against the real DMG, and commits. See [`.github/workflows/update.yml`](.github/workflows/update.yml).
+- The cask follows the releases of the app on its own: a workflow checks for a new one every hour, updates the version and checksum, verifies them against the real DMG, and commits. See [`.github/workflows/update.yml`](.github/workflows/update.yml).
 - Every release of the app is flagged as a pre-release for now, which is why Homebrew's own audit complains about it.
 
 Report problems with the app in [its repository](https://github.com/Peppe37/Notcholino/issues), and problems with installing it here.

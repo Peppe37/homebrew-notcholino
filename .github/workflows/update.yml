@@ -1,10 +1,10 @@
 name: Update the cask
 
-# Looks for a new Notcholino release every few hours (and on demand), updates the version and the checksum,
+# Looks for a new Notcholino release every hour (and on demand), updates the version and the checksum,
 # checks the result against the real DMG, and only then commits it.
 on:
   schedule:
-    - cron: "23 */6 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
