@@ -1,11 +1,11 @@
-# Homebrew tap for Notcholino
+# Homebrew tap of Peppe37
 
-[Notcholino](https://github.com/Peppe37/Notcholino) is a free and open-source app that turns the notch of your MacBook into a place for what is playing, your calendar, files you are carrying around, device popups and plugins.
+This tap holds the apps I make. For now there is one: [Notcholino](https://github.com/Peppe37/Notcholino), a free and open-source app that turns the notch of your MacBook into a place for what is playing, your calendar, files you are carrying around, device popups and plugins.
 
 ## Install
 
 ```sh
-brew install --cask Peppe37/notcholino/notcholino
+brew install --cask Peppe37/tap/notcholino
 ```
 
 Use the full name once: it also tells Homebrew you trust this tap. After that, `brew upgrade --cask notcholino` updates it.
